@@ -107,26 +107,26 @@ function App() {
 	return (
 		<div className="App">
 			<AddItemForm addItem={addTodoList}/>
-			{todoLists.map(t =>  {
+			{todoLists.map(tl =>  {
 
-				let taskForTodoList = tasks[t.id]
-				if(t.filter === "complited") {
+				let taskForTodoList = tasks[tl.id]
+				if(tl.filter === "complited") {
 					taskForTodoList = taskForTodoList.filter(t => t.isDone === false)
 				}
-				if(t.filter === "active") {
+				if(tl.filter === "active") {
 					taskForTodoList = taskForTodoList.filter(t => t.isDone === true)
 				}
 				
 				return (
-					<Todolist 	key={t.id}
-								id={t.id}
-								title={t.title} 
+					<Todolist 	key={tl.id}
+								id={tl.id}
+								title={tl.title} 
 								tasks={taskForTodoList} 
 								removeTask={removeTask}
 								changeFilter={changeFilter}
 								addTask={addTask}
 								chandgeTaskStatus={chandgeStatus}
-								filter={t.filter}
+								filter={tl.filter}
 								removeTodoList={removeTodoList}
 								chandgeTaskTitle={chandgeTaskTitle}
 								chandgeTodoListTitle={chandgeTodoListTitle}/>

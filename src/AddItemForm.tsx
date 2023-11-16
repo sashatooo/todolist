@@ -6,24 +6,24 @@ type AddItemFormPropsType = {
 
 export function AddItemForm(props: AddItemFormPropsType) {
 
-	let [newTaskTitle, setNewTaskTitle] = useState("")
+	let [newTitle, setNewTitle] = useState("")
 	let [error, setError] = useState<string | null>(null)
 
 	function onNewTitleChangeHendler(e: ChangeEvent<HTMLInputElement>) {
-		setNewTaskTitle(e.currentTarget.value)
+		setNewTitle(e.currentTarget.value)
 	}
 
 	function onKeyPressHendler(e: KeyboardEvent<HTMLInputElement>) {
 		setError(null)
 		if (e.charCode === 13) {
-			addTask()
+			addNewItem()
 		}
 	}
 
-	function addTask() {
-		if (newTaskTitle.trim() !== "") {
-			props.addItem(newTaskTitle.trim())
-			setNewTaskTitle("")
+	function addNewItem() {
+		if (newTitle.trim() !== "") {
+			props.addItem(newTitle.trim())
+			setNewTitle("")
 		} else {
 			setError("Field is required")
 		}
@@ -31,11 +31,11 @@ export function AddItemForm(props: AddItemFormPropsType) {
 
 	return (
 		<div>
-			<input value={newTaskTitle}
+			<input value={newTitle}
 				onChange={onNewTitleChangeHendler}
 				onKeyPress={onKeyPressHendler}
 				className={error ? "error" : ""} />
-			<button onClick={addTask}>+</button>
+			<button onClick={addNewItem}>+</button>
 			{error && <div className="error-message">{error}</div>}
 		</div>
 	);
