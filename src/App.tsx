@@ -5,13 +5,13 @@ import {v1} from 'uuid'
 import { AddItemForm } from './AddItemForm'
 
 export type FilterValuesType = "all" | "complited" | "active"
-type TodoListType = {
+export type TodoListType = {
 	id: string
 	title: string
 	filter: FilterValuesType
 }
 
-type TaskStateType = {
+export type TaskStateType = {
 	[id: string]: TaskType[]
 }
 
@@ -106,6 +106,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<div>learn react</div>
 			<AddItemForm addItem={addTodoList}/>
 			{todoLists.map(tl =>  {
 
